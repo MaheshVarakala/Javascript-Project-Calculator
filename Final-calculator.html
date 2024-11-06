@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculator</title>
+
+    <style>
+      body {
+        background-color: black;
+      }
+
+      .keypad {
+        color: white;
+        background-color: rgb(51, 51, 51);
+        border: none;
+        padding: 17px;
+        border-radius: 60px;
+        height: 60px;
+        width: 60px;
+        font-size: 26px;
+        margin-right: 5px;
+      }
+
+      .clear-button {
+        color: white;
+        background-color: rgb(51, 51, 51);
+        border: none;       
+        border-radius: 60px;
+        height: 60px;
+        width: 60px;
+        font-size: 15px;
+        margin-right: 5px;
+
+      }
+
+      .calculation-button {
+        background-color: orange;
+      }
+
+      .result {
+        color: white;
+        font-size: 45px;
+        margin-top: 15px;
+        margin-bottom: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <p class="js-calculation result"></p>
+    <p>
+      <button class="keypad" onclick="
+        updateCalculation('1');
+        "> 1 
+      </button>
+
+      <button class = "keypad" onclick="
+        updateCalculation('2');
+        "> 2 
+      </button>
+
+      <button class = "keypad" onclick="
+        updateCalculation('3');
+        "> 3 
+      </button>
+
+      <button class = "keypad calculation-button" onclick="
+        updateCalculation('+');
+        "> +
+      </button>
+    </p>
+
+    <p>
+      <button class = "keypad" onclick="
+        updateCalculation('4'); 
+        "> 4
+      </button>
+
+      <button class = "keypad" onclick="
+        updateCalculation('5');
+        ">5
+      </button>
+
+      <button class = "keypad" onclick="
+        updateCalculation('6');
+        ">6
+      </button>
+
+      <button class = "keypad calculation-button" onclick="
+        updateCalculation('-');
+        ">-
+      </button>
+    </p>
+
+    <p>
+      <button class = "keypad" onclick="
+        updateCalculation('7');
+        ">7
+      </button>
+
+      <button class = "keypad" onclick="
+        updateCalculation('8');
+        ">8
+      </button>
+
+      <button class = "keypad" onclick="
+        updateCalculation('9');
+        ">9
+      </button>
+
+      <button class = "keypad calculation-button" onclick="
+        updateCalculation('*');
+        ">*
+      </button>
+    </p>
+
+
+    <p>
+      
+      <button class = "keypad" onclick="
+        updateCalculation('0');
+        "> 0 
+      </button>
+  
+      <button class = "keypad" onclick="
+        updateCalculation('.');
+        "> . 
+      </button>      
+
+      <button class = "keypad" onclick="
+        eval(calculation);
+        calculation = eval(calculation);
+
+        displayCalculation();
+
+        localStorage.setItem('calculation', calculation);               
+        
+        "> = 
+      </button>
+
+      <button class = "keypad calculation-button" onclick="
+        updateCalculation('/');
+        "> / 
+      </button>
+
+    </p> 
+    
+    <P>
+      <button class = "clear-button" onclick="
+        calculation = '';
+        displayCalculation();
+
+        localStorage.setItem('calculation', calculation);
+        ">Clear
+      </button>
+    </p>
+
+    <script>      
+        let calculation = localStorage.getItem('calculation') || '' ;
+
+        displayCalculation();
+
+        function updateCalculation(value) {
+          calculation += value;
+
+          displayCalculation();
+
+          localStorage.setItem('calculation', calculation);
+        }
+
+        function displayCalculation() {
+          document.querySelector('.js-calculation')
+          .innerHTML = calculation;
+        }
+      
+       
+    </script>
+
+  </body>
+</html>
